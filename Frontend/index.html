@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Circular Economy Marketplace</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <header class="navbar">
+        <div class="logo">Circular Economy</div>
+        <div class="nav-links">
+            <input type="text" id="searchBar" placeholder="Search products...">
+            <button id="toggle-dark-mode" onclick="toggleDarkMode()">🌙</button>
+            <button id="cartBtn" onclick="toggleCartSidebar()">🛒</button> <!-- Cart button -->
+        </div>
+    </header>
+
+    <!-- Filters and Sorting -->
+    <div class="filters">
+        <select id="sortBy">
+            <option value="low-high">Price: Low to High</option>
+            <option value="high-low">Price: High to Low</option>
+            <option value="rating">Highest Rated</option>
+        </select>
+        <select id="categoryFilter">
+            <option value="all">All Categories</option>
+            <option value="eco">Eco-Friendly</option>
+            <option value="tech">Technology</option>
+        </select>
+    </div>
+    
+
+    <main>
+        <div class="product-list fade-in">
+            <!-- Product Cards -->
+            <div class="product-card">
+                <img src="https://brownliving.in/cdn/shop/products/steel-straws-reusable-straws-2-bent-2-straight-1-cleaner-1-pouch-eco-friendly-straws-tbb-66-straw-brown-living-330037_700x.jpg?v=1682968290"
+                    alt="Product 1">
+                <h3>Steel Straws | Reusable Straws 2 Bent + 2 Straight + 1 Cleaner + 1 Pouch | Eco friendly Straws</h3>
+                <p>₹199</p>
+                <button class="cta-btn"
+                    onclick="addToCart({id: 1, name: 'Product 1', price: '$50', image: 'https://brownliving.in/cdn/shop/products/steel-straws-reusable-straws-2-bent-2-straight-1-cleaner-1-pouch-eco-friendly-straws-tbb-66-straw-brown-living-330037_700x.jpg?v=1682968290'})">Add
+                    to Cart</button>
+            </div>
+            <div class="product-card">
+                <img src="https://brownliving.in/cdn/shop/products/coconut-fiber-coir-utensil-scrub-laundry-brush-076-01731-as-ccl-002-cleaning-supplies-brown-living-565816_600x.jpg?v=1682961398"
+                    alt="Product 2">
+                <h3>Coconut Fiber Coir Utensil Scrub & Laundry Brush</h3>
+                <p>₹450</p>
+                <button class="cta-btn"
+                    onclick="addToCart({id: 2, name: 'Product 2', price: '$70', image: 'https://brownliving.in/cdn/shop/products/coconut-fiber-coir-utensil-scrub-laundry-brush-076-01731-as-ccl-002-cleaning-supplies-brown-living-565816_600x.jpg?v=1682961398'})">Add
+                    to Cart</button>
+            </div>
+            <div class="product-card">
+                <!-- Agar image 'product' folder mein hai -->
+                <img src="https://brownliving.in/cdn/shop/products/handmade-wooden-solitaire-board-game-with-metal-balls-beads-travel-games-036-04446-1092-learning-educational-toys-brown-living-941235_500x.jpg?v=1682963125"
+                    alt="Product 3" />
+
+
+
+                <h3>Handmade Indian Wooden Solitaire Board Game with Steel Beads</h3>
+                <p>₹499</p>
+                <button class="cta-btn"
+                    onclick="addToCart({id: 3, name: 'Product 3', price: '$100', image: 'https://brownliving.in/cdn/shop/products/handmade-wooden-solitaire-board-game-with-metal-balls-beads-travel-games-036-04446-1092-learning-educational-toys-brown-living-941235_500x.jpg?v=1682963125'})">Add
+                    to Cart</button>
+            </div>
+            <div class="product-card">
+                <img src="https://brownliving.in/cdn/shop/products/the-lucky-turtle-biodegradable-eco-friendly-mobile-cover-phone-turtl-13-008-tech-accessories-brown-living-590978_700x.jpg?v=1682968734"
+                    alt="Product 3">
+                <h3>The Lucky Turtle- Biodegradable Eco-Friendly Mobile/ Phone Cover</h3>
+                <p>₹899</p>
+                <button class="cta-btn"
+                    onclick="addToCart({id: 3, name: 'Product 3', price: '$100', image: 'https://brownliving.in/cdn/shop/products/the-lucky-turtle-biodegradable-eco-friendly-mobile-cover-phone-turtl-13-008-tech-accessories-brown-living-590978_700x.jpg?v=1682968734'})">Add
+                    to Cart</button>
+            </div>
+            <div class="product-card">
+                <img src="https://brownliving.in/cdn/shop/products/classic-handmade-wooden-2-in-1-ludo-magnetic-snakes-and-ladders-036-01682-1023-learning-educational-toys-brown-living-881401_700x.jpg?v=1696072516" alt="Product 3">
+                <h3>Handmade Wooden 2 In 1 Magnetic Ludo Snakes And Ladders Set</h3>
+                <p>₹549</p>
+                <button class="cta-btn"
+                    onclick="addToCart({id: 3, name: 'Product 3', price: '$100', image: 'https://brownliving.in/cdn/shop/products/classic-handmade-wooden-2-in-1-ludo-magnetic-snakes-and-ladders-036-01682-1023-learning-educational-toys-brown-living-881401_700x.jpg?v=1696072516'})">Add
+                    to Cart</button>
+            </div>
+            <div class="product-card">
+                <img src="https://brownliving.in/cdn/shop/products/water-activated-plain-paper-tape-48mm-x-183-metres-made-with-kraft-paper-plant-based-adhesive-bl-8-packing-tape-brown-living-434073_700x.jpg?v=1684955379" alt="Product 3">
+                <h3>Water Activated Plain Paper Tape- 48mm x 183 metres - Made with Kraft Paper & Plant Based Adhesive</h3>
+                <p>₹449</p>
+                <button class="cta-btn"
+                    onclick="addToCart({id: 3, name: 'Product 3', price: '$100', image: 'https://brownliving.in/cdn/shop/products/water-activated-plain-paper-tape-48mm-x-183-metres-made-with-kraft-paper-plant-based-adhesive-bl-8-packing-tape-brown-living-434073_700x.jpg?v=1684955379'})">Add
+                    to Cart</button>
+            </div>
+            <div class="product-card">
+                <img src="https://brownliving.in/cdn/shop/products/coconut-fiber-dry-body-brush-almitra-sustainables-sustainable-bath-accessories-brown-living-076-02891-as-dbb-001-222558_700x.jpg?v=1709305061" alt="Product 3">
+                <h3>Coconut Fiber - Dry Body Brush</h3>
+                <p>₹399</p>
+                <button class="cta-btn"
+                    onclick="addToCart({id: 3, name: 'Product 3', price: '$100', image: 'https://brownliving.in/cdn/shop/products/coconut-fiber-dry-body-brush-almitra-sustainables-sustainable-bath-accessories-brown-living-076-02891-as-dbb-001-222558_700x.jpg?v=1709305061'})">Add
+                    to Cart</button>
+            </div>
+            <div class="product-card">
+                <img src="https://brownliving.in/cdn/shop/products/bird-feeder-coconut-shell-bird-house-with-hanging-rope-tbb-26-bird-feeder-brown-living-481158_600x.jpg?v=1682960788" alt="Product 3">
+                <h3>Bird Feeder | Coconut Shell Bird House with Hanging Rope</h3>
+                <p>₹199</p>
+                <button class="cta-btn"
+                    onclick="addToCart({id: 3, name: 'Product 3', price: '$100', image: 'https://brownliving.in/cdn/shop/products/bird-feeder-coconut-shell-bird-house-with-hanging-rope-tbb-26-bird-feeder-brown-living-481158_600x.jpg?v=1682960788'})">Add
+                    to Cart</button>
+            </div>
+            <div class="product-card">
+                <img src="https://brownliving.in/cdn/shop/products/recycled-notebooks-pack-of-6-70-gsm-paper-216-08584-rsk80ur-notebooks-notepads-brown-living-705176_700x.jpg?v=1682966800" alt="Product 3">
+                <h3>Recycled Notebooks- Pack of 6 | 70 GSM Paper</h3>
+                <p>₹300</p>
+                <button class="cta-btn"
+                    onclick="addToCart({id: 3, name: 'Product 3', price: '$100', image: 'https://brownliving.in/cdn/shop/products/recycled-notebooks-pack-of-6-70-gsm-paper-216-08584-rsk80ur-notebooks-notepads-brown-living-705176_700x.jpg?v=1682966800'})">Add
+                    to Cart</button>
+            </div>
+            <div class="product-card">
+                <img src="https://brownliving.in/cdn/shop/files/handmade-sabai-grass-roti-box-natural-kadam-haat-sustainable-trays-platters-brown-living-sb35nat-729550_700x.jpg?v=1712149077" alt="Product 3">
+                <h3>Handmade Sabai Grass Roti Box - Natura</h3>
+                <p>₹999</p>
+                <button class="cta-btn"
+                    onclick="addToCart({id: 3, name: 'Product 3', price: '$100', image: 'https://brownliving.in/cdn/shop/files/handmade-sabai-grass-roti-box-natural-kadam-haat-sustainable-trays-platters-brown-living-sb35nat-729550_700x.jpg?v=1712149077'})">Add
+                    to Cart</button>
+            </div>
+            <div class="product-card">
+                <img src="https://brownliving.in/cdn/shop/files/sustainable-eyewear-frame-case-by-paperwallets-at-brownliving-908445_1100x.jpg?v=1733403095" alt="Product 3">
+                <h3>Eyewear frame case
+                </h3>
+                <p>₹599</p>
+                <button class="cta-btn"
+                    onclick="addToCart({id: 3, name: 'Product 3', price: '$100', image: 'https://brownliving.in/cdn/shop/files/handmade-sabai-grass-jewellery-box-orange-kadam-haat-sustainable-baskets-boxes-brown-living-sb35wseporg-583934_1100x.jpg?v=1716996865'})">Add
+                    to Cart</button>
+            </div>
+            <div class="product-card">
+                <img src="https://brownliving.in/cdn/shop/files/handmade-sabai-grass-jewellery-box-natural-kadam-haat-sustainable-baskets-boxes-brown-living-sb35wsepnat-737173_1100x.jpg?v=171699035" alt="Product 3">
+                <h3>Handmade Sabai Grass Jewellery Box - Natural</h3>
+                <p>₹899</p>
+                <button class="cta-btn"
+                    onclick="addToCart({id: 3, name: 'Product 3', price: '$100', image: 'https://brownliving.in/cdn/shop/files/handmade-sabai-grass-jewellery-box-natural-kadam-haat-sustainable-baskets-boxes-brown-living-sb35wsepnat-737173_1100x.jpg?v=1716997035'})">Add
+                    to Cart</button>
+            </div>
+            <div class="product-card">
+                <img src="https://brownliving.in/cdn/shop/files/handmade-sabai-grass-jewellery-box-green-kadam-haat-sustainable-baskets-boxes-brown-living-sb35wsepgrn-399666_1100x.jpg?v=1716997130" alt="Product 3">
+                <h3>Handmade Sabai Grass Jewellery Box - Green</h3>
+                <p>₹899</p>
+                <button class="cta-btn"
+                    onclick="addToCart({id: 3, name: 'Product 3', price: '$100', image: 'https://brownliving.in/cdn/shop/files/handmade-sabai-grass-jewellery-box-green-kadam-haat-sustainable-baskets-boxes-brown-living-sb35wsepgrn-399666_1100x.jpg?v=1716997130'})">Add
+                    to Cart</button>
+            </div>
+            <div class="product-card">
+                <img src="https://brownliving.in/cdn/shop/files/handmade-bamboo-chip-dip-indigo-kadam-haat-sustainable-trays-platters-brown-living-tb55ing-859520_1100x.jpg?v=1712237676" alt="Product 3">
+                <h3>Handmade Bamboo Chip & Dip-Indigo</h3>
+                <p>₹599</p>
+                <button class="cta-btn"
+                    onclick="addToCart({id: 3, name: 'Product 3', price: '$100', image: 'https://brownliving.in/cdn/shop/files/handmade-bamboo-chip-dip-indigo-kadam-haat-sustainable-trays-platters-brown-living-tb55ing-859520_1100x.jpg?v=1712237676'})">Add
+                    to Cart</button>
+            </div>
+            <div class="product-card">
+                <img src="https://brownliving.in/cdn/shop/products/handmade-sabai-grass-roti-box-red-kadam-haat-sustainable-baskets-boxes-brown-living-sb35red-781505_1100x.jpg?v=1710613132" alt="Product 3">
+                <h3>Handmade Sabai Grass Roti Box - Red</h3>
+                <p>₹999</p>
+                <button class="cta-btn"
+                    onclick="addToCart({id: 3, name: 'Product 3', price: '$100', image: 'https://brownliving.in/cdn/shop/products/handmade-sabai-grass-roti-box-red-kadam-haat-sustainable-baskets-boxes-brown-living-sb35red-781505_1100x.jpg?v=1710613132'})">Add
+                    to Cart</button>
+            </div>
+            <div class="product-card">
+                <img src="https://brownliving.in/cdn/shop/products/dark-fantasy-upcycled-fabric-journal-hard-bound-verified-sustainable-notebooks-notepads-on-brown-living-194705_400x.jpg?v=1705566238" alt="Product 3">
+                <h3>Dark Fantasy- Upcycled Fabric Journal-Hard-bound</h3>
+                <p>₹300</p>
+                <button class="cta-btn"
+                    onclick="addToCart({id: 3, name: 'Product 3', price: '$100', image: 'https://brownliving.in/cdn/shop/products/dark-fantasy-upcycled-fabric-journal-hard-bound-verified-sustainable-notebooks-notepads-on-brown-living-194705_400x.jpg?v=1705566238'})">Add
+                    to Cart</button>
+            </div>
+            <div class="product-card">
+                <img src="https://brownliving.in/cdn/shop/files/sustainable-oasis-blazer-by-hempzero-at-brownliving-849937_800x.jpg?v=1733262070" alt="">
+                <h3>Oasis Blazer
+                </h3>
+                <p>₹6999</p>
+                <button class="cta-btn"
+                    onclick="addToCart({id: 3, name: 'Product 3', price: '$100', image: 'https://brownliving.in/cdn/shop/products/pumice-stone-pack-of-2-192-06769-pumice-stone-pack-of-2-bath-accessories-brown-living-862984_1000x.jpg?v=1682966472'})">Add
+                    to Cart</button>
+            </div>
+            <div class="product-card">
+                <img src="https://brownliving.in/cdn/shop/products/copper-bottle-sustainable-products-on-brown-living-174811_800x.jpg?v=1688805869" alt="Product 3">
+                <h3>Copper Bottle</h3>
+                <p>₹850</p>
+                <button class="cta-btn"
+                    onclick="addToCart({id: 3, name: 'Product 3', price: '$100', image: 'https://brownliving.in/cdn/shop/products/copper-bottle-sustainable-products-on-brown-living-174811_800x.jpg?v=1688805869'})">Add
+                    to Cart</button>
+            </div>
+            <div class="product-card">
+                <img src="https://brownliving.in/cdn/shop/products/bamboo-stapler-sustainable-desk-accessory-bamboo-stationery-gift-tbb-94-stationery-brown-living-835793_1100x.jpg?v=1682960480" alt="Product 3">
+                <h3>Bamboo Stapler | Sustainable Desk Accessory | Bamboo Stationery Gift
+                </h3>
+                <p>₹299
+                </p>
+                <button class="cta-btn"
+                    onclick="addToCart({id: 3, name: 'Product 3', price: '$100', image: 'https://via.placeholder.com/300'})">Add
+                    to Cart</button>
+            </div>
+            <div class="product-card">
+                <img src="https://brownliving.in/cdn/shop/products/solid-mens-green-athleisure-joggers-168-06060-bmjgs-mens-pants-brown-living-901366_300x.jpg?v=1682967921" alt="Product 3">
+                <h3>Solid Men's Green Athleisure Joggers</h3>
+                <p>	₹1,499</p>
+                <button class="cta-btn"
+                    onclick="addToCart({id: 3, name: 'Product 3', price: '$100', image: 'https://brownliving.in/cdn/shop/products/solid-mens-green-athleisure-joggers-168-06060-bmjgs-mens-pants-brown-living-901366_300x.jpg?v=1682967921'})">Add
+                    to Cart</button>
+            </div>
+            <div class="product-card">
+                <img src="https://brownliving.in/cdn/shop/products/ayurvedic-facial-foundation-medium-tone-154-05556-ayurvedic-facial-foundation-medium-makeup-foundation-691290_1000x.jpg?v=1682960281" alt="Product 3">
+                <h3>Ayurvedic Facial Foundation Medium Tone</h3>
+                <p>₹2,861</p>
+                <button class="cta-btn"
+                    onclick="addToCart({id: 3, name: 'Product 3', price: '$100', image: 'https://brownliving.in/cdn/shop/products/ayurvedic-facial-foundation-medium-tone-154-05556-ayurvedic-facial-foundation-medium-makeup-foundation-691290_1000x.jpg?v=1682960281'})">Add
+                    to Cart</button>
+            </div>
+
+            <div class="product-card">
+                <img src="https://brownliving.in/cdn/shop/products/rhino-duffel-navy-blue-073-04554-cerd0004-travel-duffel-brown-living-220452_800x.jpg?v=1682967101" alt="Product 3">
+                <h3>Rhino Duffel - Navy Blue</h3>
+                <p>₹4,500</p>
+                <button class="cta-btn"
+                    onclick="addToCart({id: 3, name: 'Product 3', price: '$100', image: 'https://via.placeholder.com/300'})">Add
+                    to Cart</button>
+            </div>
+            <div class="product-card">
+                <img src="https://brownliving.in/cdn/shop/products/kakapo-cork-wallet-unique-unisex-slim-wallet-for-men-and-women-tan-cekwt001-wallet-brown-living-646550_400x.jpg?v=1682963643" alt="Product 3">
+                <h3>Kakapo Cork Wallet - Unique Unisex Slim Wallet for Men and Women - Tan
+                </h3>
+                <p>₹2,000
+                </p>
+                <button class="cta-btn"
+                    onclick="addToCart({id: 3, name: 'Product 3', price: '$100', image: 'https://via.placeholder.com/300'})">Add
+                    to Cart</button>
+            </div>
+
+
+            <div class="product-card">
+                <img src="https://brownliving.in/cdn/shop/products/recycled-news-paper-colour-pencils-set-of-10-pencils-x-2-packs-colournp-pack-of-20-pencils-brown-living-499544_700x.jpg?v=1682966799" alt="Product 3">
+                <h3>Recycled News Paper Colour Pencils- Set of 10 Pencils x 2 Packs</h3>
+                <p>₹370</p>
+                <button class="cta-btn"
+                    onclick="addToCart({id: 3, name: 'Product 3', price: '$100', image: 'https://brownliving.in/cdn/shop/products/recycled-news-paper-colour-pencils-set-of-10-pencils-x-2-packs-colournp-pack-of-20-pencils-brown-living-499544_700x.jpg?v=1682966799'})">Add
+                    to Cart</button>
+            </div>
+            <div class="product-card">
+                <img src="https://brownliving.in/cdn/shop/products/neem-comb-pocket-size-comb-travel-comb-handmade-tbb-47-hair-comb-brown-living-850418_1000x.jpg?v=1682965281" alt="Product 3">
+                <h3>Size Comb | Travel Comb | HandmNeem Comb | Pocketade
+                </h3>
+                <p>₹149
+                </p>
+                <button class="cta-btn"
+                    onclick="addToCart({id: 3, name: 'Product 3', price: '$100', image: 'https://via.placeholder.com/300'})">Add
+                    to Cart</button>
+            </div>
+            <div class="product-card">
+                <img src="https://brownliving.in/cdn/shop/products/mandala-pro-mat-052-01335-0-yoga-mat-brown-living-640429_1100x.jpg?v=1682964262" alt="Product 3">
+                <h3>Mandala Pro Mat</h3>
+                <p>₹5,990</p>
+                <button class="cta-btn"
+                    onclick="addToCart({id: 3, name: 'Product 3', price: '$100', image: 'https://brownliving.in/cdn/shop/products/mandala-pro-mat-052-01335-0-yoga-mat-brown-living-640429_1100x.jpg?v=1682964262'})">Add
+                    to Cart</button>
+            </div>
+            <div class="product-card">
+                <img src="https://brownliving.in/cdn/shop/products/natural-deodorant-stick-spice-infusion-treewear-nd-si-deodorant-brown-living-780649_1100x.jpg?v=1682965141" alt="Product 3">
+                <h3>Natural Deodorant Stick - Spice Infusion
+                </h3>
+                <p>₹420
+                </p>
+                <button class="cta-btn"
+                    onclick="addToCart({id: 3, name: 'Product 3', price: '$100', image: 'https://via.placeholder.com/300'})">Add
+                    to Cart</button>
+            </div>
+            <div class="product-card">
+                <img src="https://brownliving.in/cdn/shop/files/sustainable-bambooshell-leak-proof-steel-bottle-by-organic-b-at-brownliving-932337_1100x.jpg?v=1731608235" alt="Product 3">
+                <h3>Bambooshell Leak Proof Steel Bottle
+                </h3>
+                <p>₹699
+                </p>
+                <button class="cta-btn"
+                    onclick="addToCart({id: 3, name: 'Product 3', price: '$100', image: 'https://via.placeholder.com/300'})">Add
+                    to Cart</button>
+            </div>
+            <div class="product-card">
+                <img src="https://brownliving.in/cdn/shop/files/handmade-moonj-grass-laundry-basket-white-line-kadam-haat-sustainable-baskets-boxes-brown-living-bm47wit1-763793_400x.jpg?v=1711656970" alt="Product 3">
+                <h3>Handmade Moonj Grass Laundry Basket - White-Line
+                </h3>
+                <p>₹2,999
+                </p>
+                <button class="cta-btn"
+                    onclick="addToCart({id: 3, name: 'Product 3', price: '$100', image: 'https://via.placeholder.com/300'})">Add
+                    to Cart</button>
+            </div>
+            <div class="product-card">
+                <img src="https://brownliving.in/cdn/shop/files/gp-kt1-b_1100x.jpg?v=1697632312" alt="Product 3">
+                <h3>Little Ganesh gift (Puja kit) | Eco-friendly Ganesha Idol
+                </h3>
+                <p>₹690
+                </p>
+                <button class="cta-btn"
+                    onclick="addToCart({id: 3, name: 'Product 3', price: '$100', image: 'https://via.placeholder.com/300'})">Add
+                    to Cart</button>
+            </div>
+            <div class="product-card">
+                <img src="https://brownliving.in/cdn/shop/products/wooden-crates-with-holder-pine-wood-storage-baskets-medium-176-14125-pwcbm-baskets-boxes-brown-living-965281_700x.jpg?v=1682969920" alt="Product 3">
+                <h3>Wooden Crates with Holder | Pine Wood Storage Baskets | Medium
+                </h3>
+                <p>₹1,150
+                </p>
+                <button class="cta-btn"
+                    onclick="addToCart({id: 3, name: 'Product 3', price: '$100', image: 'https://via.placeholder.com/300'})">Add
+                    to Cart</button>
+            </div>
+            <div class="product-card">
+                <img src="https://brownliving.in/cdn/shop/products/og-cotton-t-shirt-green-goes-with-everything-one-less-31310010002-xs-womens-t-shirt-brown-living-199649_800x.jpg?v=1682965463" alt="Product 3">
+                <h3>OG Cotton T Shirt - Green Goes With Everything!
+                </h3>
+                <p>₹1,300
+                </p>
+                <button class="cta-btn"
+                    onclick="addToCart({id: 3, name: 'Product 3', price: '$100', image: 'https://via.placeholder.com/300'})">Add
+                    to Cart</button>
+            </div>
+            <div class="product-card">
+                <img src="https://brownliving.in/cdn/shop/products/spa-day-natural-laundry-detergent-1kg-cclbsd20211-cleaning-supplies-brown-living-234658_1100x.jpg?v=1682967966" alt="Product 3">
+                <h3>Spa Day Natural Laundry Detergent - 1Kg
+                </h3>
+                <p>₹380
+                </p>
+                <button class="cta-btn"
+                    onclick="addToCart({id: 3, name: 'Product 3', price: '$100', image: 'https://via.placeholder.com/300'})">Add
+                    to Cart</button>
+            </div>
+            <div class="product-card">
+                <img src="https://brownliving.in/cdn/shop/products/bamboo-soap-tray-handmade-soap-dish-wooden-tray-for-soap-tbb-10-bath-accessories-brown-living-936066_1100x.jpg?v=1682960485" alt="Product 3">
+                <h3>Bamboo Soap Tray | Handmade Soap Dish | Wooden Tray for Soap
+                </h3>
+                <p>₹379
+                </p>
+                <button class="cta-btn"
+                    onclick="addToCart({id: 3, name: 'Product 3', price: '$100', image: 'https://via.placeholder.com/300'})">Add
+                    to Cart</button>
+            </div>
+            <div class="product-card">
+                <img src="https://brownliving.in/cdn/shop/products/bamboo-toothbrushes-pack-of-4-soft-bristles-multicolor-adult-095-07065-terrabrush-bamboo-toothbrushes-pack-of-4-soft-tooth-brush-brown-living-272497_1100x.jpg?v=1682960637" alt="Product 3">
+                <h3>Bamboo Toothbrushes Pack of 4 Soft Bristles Multicolor Adult
+                </h3>
+                <p>₹299
+                </p>
+                <button class="cta-btn"
+                    onclick="addToCart({id: 3, name: 'Product 3', price: '$100', image: 'https://via.placeholder.com/300'})">Add
+                    to Cart</button>
+            </div>
+            <div class="product-card">
+                <img src="https://brownliving.in/cdn/shop/products/bamboo-razor-double-edged-safety-razor-razor-for-men-women-tbb-9-shaving-razor-brown-living-272478_1100x.jpg?v=1682960390" alt="Product 3">
+                <h3>Bamboo Razor | Double Edged Safety Razor | Razor for Men & Women
+                </h3>
+                <p>₹299
+                </p>
+                <button class="cta-btn"
+                    onclick="addToCart({id: 3, name: 'Product 3', price: '$100', image: 'https://via.placeholder.com/300'})">Add
+                    to Cart</button>
+            </div>
+            <div class="product-card">
+                <img src="https://brownliving.in/cdn/shop/products/wooden-tic-tac-toe-noughts-and-crosses-game-unique-handmade-quality-wood-family-board-games-036-04423-1026-learning-educational-toys-brown-living-929143_400x.jpg?v=1682969933" alt="Product 3">
+                <h3>Wooden Tic Tac Toe- Unique Handmade Quality | Family Board Games
+                </h3>
+                <p>₹499
+                </p>
+                <button class="cta-btn"
+                    onclick="addToCart({id: 3, name: 'Product 3', price: '$100', image: 'https://via.placeholder.com/300'})">Add
+                    to Cart</button>
+            </div>
+            <div class="product-card">
+                <img src="https://brownliving.in/cdn/shop/products/olive-vitamin-e-massage-oil-hydration-toning-100ml-anahata-67-body-oil-brown-living-296933_1000x.jpg?v=1682965546" alt="Product 3">
+                <h3>Olive & Vitamin E Massage Oil Hydration & Toning -100ml
+                </h3>
+                <p>₹566
+                </p>
+                <button class="cta-btn"
+                    onclick="addToCart({id: 3, name: 'Product 3', price: '$100', image: 'https://via.placeholder.com/300'})">Add
+                    to Cart</button>
+            </div>
+            <div class="product-card">
+                <img src="https://d371c3ugbb3pk.cloudfront.net/pub/media/catalog/product/cache/9db98d540383868e55af1a0e488bebe5/2/3/23-0108-an-i-01_1.webp" alt="Product 3">
+                <h3>Love Birds Anniversary Hamper</h3>
+                <p>₹1,880</p>
+                <button class="cta-btn"
+                    onclick="addToCart({id: 3, name: 'Product 3', price: '$100', image: 'https://via.placeholder.com/300'})">Add
+                    to Cart</button>
+            </div>
+            <div class="product-card">
+                <img src="https://brownliving.in/cdn/shop/products/cinnamon-roll-cocoshell-soy-wax-candle-allure-scented-candles-sustainable-candles-fragrances-brown-living-505474_1100x.jpg?v=1707319308" alt="">
+                <h3>Cinnamon Roll Cocoshell Soy Wax Candle
+                </h3>
+                <p>₹180</p>
+                <button class="cta-btn"
+                    onclick="addToCart({id: 3, name: 'Product 3', price: '$100', image: 'https://via.placeholder.com/300'})">Add
+                    to Cart</button>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Order Details Form -->
+    <div id="orderDetailsForm" class="form-container" style="display:none;">
+        <button class="close-btn" onclick="closeOrderForm()">×</button>
+        <h2>Enter Your Details</h2>
+        <form id="orderForm" onsubmit="submitOrder(event)">
+            <input type="text" id="customerName" placeholder="Your Name" required><br>
+            <input type="text" id="customerAddress" placeholder="Your Address" required><br>
+            <input type="tel" id="customerPhone" placeholder="Phone Number" required><br>
+            <button type="submit">Place Order</button>
+        </form>
+    </div>
+
+    <!-- Cart Sidebar -->
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-items">
+            <ul id="cartItemsList">
+                <!-- Cart items will be dynamically added here -->
+            </ul>
+            <button class="cta-btn" id="checkoutBtn" onclick="showOrderForm()">Proceed to Checkout</button>
+            <button class="close-btn" onclick="closeCartSidebar()">×</button>
+        </div>
+    </div>
+
+    <!-- Order Success Modal -->
+    <div class="order-success-modal" id="orderSuccessModal">
+        <div class="modal-content">
+            <h3>Order Successful!</h3>
+            <p>Your order has been placed successfully. Thank you for shopping with us.</p>
+            <button class="cta-btn" onclick="closeModal()">Close</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
